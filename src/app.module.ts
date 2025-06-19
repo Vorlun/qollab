@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { SocialController } from './social/social.controller';
-import { SocialService } from './social/social.service';
 import { SocialModule } from './social/social.module';
 import { Social } from './social/model/social.model';
 import { MerchCategoryModule } from './merch-category/merch-category.module';
 import { MerchCategory } from './merch-category/model/merch-category.model';
 import { UsersModule } from './users/users.module';
 import { User } from './users/models/user.model';
+import { Author } from './authors/models/author.model';
+import { AuthorSocial } from './authors/models/author-social.model';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import { User } from './users/models/user.model';
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [Social, MerchCategory, User],
+      models: [Social, MerchCategory, User, Author, AuthorSocial],
       autoLoadModels: true,
       logging: true,
       sync: { alter: true },

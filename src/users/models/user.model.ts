@@ -1,5 +1,6 @@
+import { Author } from "../../authors/models/author.model";
 import { Role } from "../../enums/role.enum";
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 
 interface IUserCreationAtr{
     username:string
@@ -39,4 +40,7 @@ export class User extends Model<User, IUserCreationAtr> {
     defaultValue: Role.USER,
   })
   declare role: Role;
+
+  @HasMany(()=>Author)
+  declare authors:Author
 }
