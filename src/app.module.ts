@@ -9,6 +9,8 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/models/user.model';
 import { Author } from './authors/models/author.model';
 import { AuthorSocial } from './authors/models/author-social.model';
+import { MerchModule } from './merch/merch.module';
+import { Merch } from './merch/entities/merch.entity';
 
 @Module({
   imports: [
@@ -23,7 +25,7 @@ import { AuthorSocial } from './authors/models/author-social.model';
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [Social, MerchCategory, User, Author, AuthorSocial],
+      models: [Social, MerchCategory, User, Author, AuthorSocial, Merch],
       autoLoadModels: true,
       logging: true,
       sync: { alter: true },
@@ -31,6 +33,8 @@ import { AuthorSocial } from './authors/models/author-social.model';
     SocialModule,
     MerchCategoryModule,
     UsersModule,
+    MerchModule,
+    Merch,
   ],
 })
 export class AppModule {}
